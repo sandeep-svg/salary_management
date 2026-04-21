@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Root - serve the React app
-  root "home#index"
-
   # API routes
   namespace :api do
     resources :employees
@@ -13,6 +10,9 @@ Rails.application.routes.draw do
     get 'insights/overview', to: 'insights#overview'
   end
 
+  # Root - serve the React app
+  root "home#index"
+
   # Catch-all for React SPA (must be last)
-  get "*path" => "home#index"
+  get "*path" => "home#index", constraints: ->(req) { req.path !~ /^\/assets/ }
 end

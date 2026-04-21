@@ -41,20 +41,20 @@ bundle install
 npm install
 
 # Set up the database
-rails db:create db:migrate
+bin/rails db:create db:migrate
 
 # Compile assets (first-time only)
-rails assets:precompile
+bin/rails assets:precompile
 
 # Seed with 10,000 employees
-rails db:seed_employees
+bin/rails db:seed_employees
 ```
 
 ### Running the Application
 
 ```bash
 # Single port serves both frontend and API
-rails s
+bin/rails s
 
 # Assets are precompiled, no separate frontend server needed
 # API available at http://localhost:3000/api/employees

@@ -1,7 +1,6 @@
 namespace :db do
   desc "Seed the database with 10,000 employees"
   task seed_employees: :environment do
-    require 'csv'
 
     puts "Starting employee seeding..."
 

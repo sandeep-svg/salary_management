@@ -4,15 +4,13 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  root: '.',
   build: {
     outDir: 'public/assets',
     rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, 'index.html')
-      },
+      input: path.resolve(__dirname, 'index.html'),
       output: {
         entryFileNames: 'pack_application.js',
-        chunkFileNames: 'pack_application.js',
         assetFileNames: 'application.css'
       }
     }
