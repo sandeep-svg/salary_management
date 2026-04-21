@@ -43,6 +43,9 @@ npm install
 # Set up the database
 rails db:create db:migrate
 
+# Compile assets (first-time only)
+rails assets:precompile
+
 # Seed with 10,000 employees
 rails db:seed_employees
 ```
