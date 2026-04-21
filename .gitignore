@@ -13,21 +13,33 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
-!/log/.keep
-!/tmp/.keep
+ !/log/.keep
+ !/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
+ !/tmp/pids/
+ !/tmp/pids/.keep
 
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
-!/storage/.keep
+ !/storage/.keep
 /tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+ !/tmp/storage/
+ !/tmp/storage/.keep
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Vite build output
+dist/
+
+# Ignore SQLite database
+*.sqlite3
+*.sqlite
+db/development.sqlite3
+db/test.sqlite3
 
