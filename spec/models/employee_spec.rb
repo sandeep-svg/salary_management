@@ -66,6 +66,17 @@ RSpec.describe Employee, type: :model do
       expect(employee).not_to be_valid
       expect(employee.errors[:email]).to include("is invalid")
     end
+
+    it 'rejects hire date in the future' do
+      employee = build(:employee, hire_date: Date.today + 30)
+      expect(employee).not_to be_valid
+      expect(employee.errors[:hire_date]).to include("cannot be in the future")
+    end
+
+    it 'allows today as hire date' do
+      employee = build(:employee, hire_date: Date.today)
+      expect(employee).to be_valid
+    end
   end
 
   describe 'associations' do

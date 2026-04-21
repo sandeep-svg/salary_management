@@ -3,6 +3,7 @@ class Employee < ApplicationRecord
   validates :email, uniqueness: { case_sensitive: false }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :salary, numericality: { greater_than: 0 }
+  validate :hire_date_not_in_future
 
   scope :by_country, ->(country) { where(country: country) }
   scope :by_job_title, ->(job_title) { where(job_title: job_title) }
@@ -15,5 +16,13 @@ class Employee < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def hire_date_not_in_future
+    if hire_date.present? && hire_date > Date.today
+      errors.add(:hire_date, "cannot be in the future")
+    end
   end
 end
