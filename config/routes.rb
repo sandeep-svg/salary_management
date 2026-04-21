@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Serve built assets
+  get "/assets/*path", to: proc { |env| [200, { "Content-Type" => "text/html" }, [File.read(File.join(Rails.root, "public", "assets", "index.html"))]] }
+
+  # Root route - serve the React app
+  get "/" => "home#index"
+
   # API routes
   namespace :api do
     resources :employees
