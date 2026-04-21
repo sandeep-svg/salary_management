@@ -21,7 +21,8 @@ export default function Employees() {
     setLoading(true)
     try {
       const params = { page, per_page: 20 }
-      if (search) params.search = search
+      const trimmedSearch = search.trim()
+      if (trimmedSearch) params.search = trimmedSearch
       if (country) params.country = country
 
       const response = await axios.get(API_URL, { params })

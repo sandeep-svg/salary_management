@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:css": "tailwindcss -i ./src/index.css -o ./app/assets/stylesheets/application.css --minify",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest"

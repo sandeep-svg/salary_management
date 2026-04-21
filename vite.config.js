@@ -9,16 +9,15 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html')
+      },
+      output: {
+        entryFileNames: 'pack_application.js',
+        chunkFileNames: 'pack_application.js',
+        assetFileNames: 'application.css'
       }
     }
   },
   server: {
-    port: 3000,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true
-      }
-    }
+    port: 3000
   }
 })

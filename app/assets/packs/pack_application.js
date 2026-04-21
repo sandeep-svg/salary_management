@@ -1,0 +1,1 @@
+../../javascript/packs/application.js

@@ -7,7 +7,10 @@ class Employee < ApplicationRecord
   scope :by_country, ->(country) { where(country: country) }
   scope :by_job_title, ->(job_title) { where(job_title: job_title) }
   scope :search, ->(query) {
-    where("LOWER(first_name) LIKE :q OR LOWER(last_name) LIKE :q OR LOWER(email) LIKE :q", q: "%#{query.downcase}%")
+    sanitized = query.to_s.strip
+    return none if sanitized.blank?
+
+    where("LOWER(first_name) LIKE :q OR LOWER(last_name) LIKE :q OR LOWER(email) LIKE :q", q: "%#{sanitized.downcase}%")
   }
 
   def full_name

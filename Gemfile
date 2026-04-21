@@ -31,6 +31,11 @@ gem "thruster", require: false
 # For UUID generation
 gem "ulid"
 
+# Asset pipeline
+gem "sprockets-rails"
+gem "jsbundling-rails"
+gem "cssbundling-rails"
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
